@@ -30,31 +30,45 @@ public class LocationDataAccessService implements LocationDao {
 
     @Override
     public int insertLocation(UUID id, Location location) {
-        final String sql = "INSERT INTO location (id, name, area_m2) VALUES (?,?,?)";
-        Object[] args = new Object[] {id ,location.getName(), location.getArea_m2()};
+        final String sql = "INSERT INTO location (id, name, area_m2, parent_id) VALUES (?,?,?, ?)";
+        Object[] args = new Object[] {id ,location.getName(), location.getArea_m2(), location.getParentLoc()};
         // °°°°°° cambiar por otra cosa o ya vere que hacer
         return jdbcTemplate.update(sql, args);
     }
 
     @Override
     public List<Location> selectAllLocations() {
-        final String sql = "SELECT id, name, area_m2 FROM location";
+        final String sql = "SELECT id, name, area_m2, parent_id FROM location";
         return jdbcTemplate.query(sql, (resultSet, i) ->{
             UUID id = UUID.fromString(resultSet.getString("id"));
             String name = resultSet.getString("name");
             float area_m2 = resultSet.getFloat("area_m2");
-            return new Location(id, name, area_m2);
+            String parent = resultSet.getString("parent_id");
+            
+            Location location = new Location(id, name, area_m2);
+            if(parent != null){
+                location.setParentLoc(UUID.fromString(parent));
+            }           
+          
+            return location;
         });
     }
 
     @Override
     public Optional<Location> selectLocationById(UUID id) {
-        final String sql = "SELECT id, name, area_m2 FROM location WHERE id = ?";
+        final String sql = "SELECT id, name, area_m2, parent_id FROM location WHERE id = ?";
         Location location =  jdbcTemplate.queryForObject(sql, new Object[]{id}, (resultSet, i) -> {
             UUID locationId = UUID.fromString(resultSet.getString("id"));
             String name = resultSet.getString("name");
             float area_m2 = resultSet.getFloat("area_m2");
-            return new Location(locationId, name, area_m2);
+            String parent = resultSet.getString("parent_id");
+            
+            Location location_obj = new Location(locationId, name, area_m2);
+            if(parent != null){
+                location_obj.setParentLoc(UUID.fromString(parent));
+            }
+            
+            return location_obj;
         });
         return Optional.ofNullable(location);
     }
@@ -69,8 +83,8 @@ public class LocationDataAccessService implements LocationDao {
 
     @Override
     public int updateLocationById(UUID id, Location location) {
-        final String sql = "UPDATE location SET name = ? WHERE id = ?";
-        Object[] args = new Object[] {location.getName(), id};
+        final String sql = "UPDATE location SET name = ?, area_m2 = ?, parent_id = ? WHERE id = ?";
+        Object[] args = new Object[] {location.getName(), location.getArea_m2(), location.getParentLoc(), id};
         // °°°°°° cambiar por booleano o ya vere que hacer
         return jdbcTemplate.update(sql, args);
     }

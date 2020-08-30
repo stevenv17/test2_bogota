@@ -19,10 +19,14 @@ import javax.validation.constraints.PositiveOrZero;
 public class Location {
     
     private final UUID id;
+    
     @NotBlank
     private final String name;
+    
     @PositiveOrZero
     private final float area_m2;
+    
+    private UUID parentLoc;
     
     public Location(@JsonProperty("id") UUID id, 
                     @JsonProperty("name") String name,
@@ -45,8 +49,14 @@ public class Location {
     public float getArea_m2() {
         return area_m2;
     }
-    
-    
+
+    public UUID getParentLoc() {
+        return parentLoc;
+    }
+
+    public void setParentLoc(UUID parentLoc) {
+        this.parentLoc = parentLoc;
+    }
     
     
 }
