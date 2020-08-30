@@ -4,7 +4,7 @@ services:
   #postgres
   database:
     image: postgres:10
-    container_name: postgres-app-bogota-service
+    container_name: postgres-db-bogota-service
     restart: always
     environment:
       - POSTGRES_DB=db
@@ -25,4 +25,4 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet:  10.80.0.1/16
+      - subnet:  10.81.0.1/16
