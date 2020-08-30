@@ -1,0 +1,28 @@
+version: '3'
+services:
+  
+  #postgres
+  database:
+    image: postgres:10
+    container_name: postgres-app-bogota-service
+    restart: always
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=test1234
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+     - ./database/pgdata:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    networks: 
+      - stack
+
+
+networks:
+  stack:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet:  10.80.0.1/16
