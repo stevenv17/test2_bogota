@@ -32,7 +32,6 @@ public class LocationDataAccessService implements LocationDao {
     public int insertLocation(UUID id, Location location) {
         final String sql = "INSERT INTO location (id, name, area_m2, parent_id) VALUES (?,?,?, ?)";
         Object[] args = new Object[] {id ,location.getName(), location.getArea_m2(), location.getParentLoc()};
-        // °°°°°° cambiar por otra cosa o ya vere que hacer
         return jdbcTemplate.update(sql, args);
     }
 
@@ -77,7 +76,6 @@ public class LocationDataAccessService implements LocationDao {
     public int deleteLocationById(UUID id) {
         final String sql = "DELETE FROM location WHERE id = ?";
         Object[] args = new Object[] {id};
-        // °°°°°° cambiar por booleano o ya vere que hacer
         return jdbcTemplate.update(sql, args);
     }
 
@@ -85,7 +83,6 @@ public class LocationDataAccessService implements LocationDao {
     public int updateLocationById(UUID id, Location location) {
         final String sql = "UPDATE location SET name = ?, area_m2 = ?, parent_id = ? WHERE id = ?";
         Object[] args = new Object[] {location.getName(), location.getArea_m2(), location.getParentLoc(), id};
-        // °°°°°° cambiar por booleano o ya vere que hacer
         return jdbcTemplate.update(sql, args);
     }
     

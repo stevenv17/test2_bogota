@@ -8,10 +8,12 @@ package com.example.api;
 
 import com.example.model.Location;
 import com.example.service.LocationService;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +39,13 @@ public class LocationController {
         this.locationService = locationService;
     }
     
-    @PostMapping
-    public void addLocation(@Valid @NonNull @RequestBody Location location){
-        locationService.addLocation(location);
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public HashMap<String, Object> addLocation(@Valid @NonNull @RequestBody Location location){
+        int result = locationService.addLocation(location);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("Success", result == 1);
+        return map;
+
     }
     
     @GetMapping
@@ -55,14 +61,22 @@ public class LocationController {
     }
     
     @DeleteMapping(path = "{id}")
-    public void deleteLocationById(@PathVariable("id") UUID id){
-        locationService.deleteLocation(id);
+    public HashMap<String, Object> deleteLocationById(@PathVariable("id") UUID id){
+        int result = locationService.deleteLocation(id);
+        
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("Success", result == 1);
+        return map;
     }
     
     
     @PutMapping(path = "{id}")
-    public void updateLocation(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Location locationToUpdate){
-        locationService.updateLocation(id, locationToUpdate);
+    public HashMap<String, Object> updateLocation(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Location locationToUpdate){
+        int result = locationService.updateLocation(id, locationToUpdate);
+        
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("Success", result == 1);
+        return map;
     }
     
 }
