@@ -25,7 +25,7 @@ public class LocationService
     private final LocationDao locationDao;
     
     @Autowired
-    public LocationService(@Qualifier("fakeDao") LocationDao locationDao){
+    public LocationService(@Qualifier("postgres") LocationDao locationDao){
         this.locationDao = locationDao;
     }
     
@@ -41,4 +41,11 @@ public class LocationService
         return locationDao.selectLocationById(id);
     }
     
+    public int deleteLocation(UUID id){
+        return locationDao.deleteLocationById(id);
+    }
+    
+    public int updateLocation(UUID id, Location location){
+        return locationDao.updateLocationById(id, location); 
+    }
 }

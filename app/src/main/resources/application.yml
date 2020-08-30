@@ -1,0 +1,8 @@
+## YAML Template.
+---
+app:
+    datasource:
+        jdbc-url: jdbc:postgresql://localhost:5432/db
+        username: user
+        password: test1234
+        pool-size: 30

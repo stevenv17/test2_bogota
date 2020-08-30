@@ -23,7 +23,7 @@ public class FakeLocationDataAccessService implements LocationDao{
     
     @Override
     public int insertLocation(UUID id, Location location) {
-        DB.add(new Location(id, location.getName()));
+        DB.add(new Location(id, location.getName(), location.getArea_m2()));
         return 1;
     }
 
@@ -41,12 +41,26 @@ public class FakeLocationDataAccessService implements LocationDao{
 
     @Override
     public int deleteLocationById(UUID id) {
-        return 0;
+        Optional<Location> locationMaybe = selectLocationById(id); 
+        if(!locationMaybe.isPresent()){
+            return 0;
+        }
+        DB.remove(locationMaybe.get());
+        return 1;
     }
 
     @Override
     public int updateLocationById(UUID id, Location location) {
-        return 0;
+        return selectLocationById(id)
+                .map(loc -> {
+                    int indexOfLocationToUpdate = DB.indexOf(loc);
+                    if(indexOfLocationToUpdate >= 0){
+                        DB.set(indexOfLocationToUpdate, new Location(id, location.getName(), location.getArea_m2()));
+                        return 1;
+                    }
+                    return 0;
+                })
+                .orElse(0);
     }
     
 }
