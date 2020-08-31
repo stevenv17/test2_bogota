@@ -12,6 +12,11 @@ dentro de test2_bogota/app:
 
 	./mvnw spring-boot:run -e
 
+#### Iniciar front:
+dentro de test2_bogota/app-front:
+
+	ng serve
+
 
 #### Usando API:
 
