@@ -4,24 +4,24 @@
 
 #### Iniciar contenedor de base de datos postgres:
 
-**sudo docker-compose up**   (dentro de test2_bogota)
+	**sudo docker-compose up**   (dentro de test2_bogota)
 
 #### Iniciar aplicación java:
 
-**./mvnw spring-boot:run -e**  (dentro de test2_bogota/app)
+	**./mvnw spring-boot:run -e**  (dentro de test2_bogota/app)
 
 
 #### Usando API:
 
-##### **Crear location:**
+	##### **Crear location:**
 
-petición POST al recurso **"http://localhost:8080/api/v1/location"**, enviando JSON con la forma, en donde "parentLoc" sería el id de la localización padre:
+		petición POST al recurso **"http://localhost:8080/api/v1/location"**, enviando JSON con la forma, en donde "parentLoc" sería el id de la localización padre:
 
-{
-	"name": "Nueva York",
-	"area_m2": "1445.467",
-	"parentLoc": null
-}
+		{
+			"name": "Nueva York",
+			"area_m2": "1445.467",
+			"parentLoc": null
+		}
 
 ##### **Obtener todos los location:**
 
