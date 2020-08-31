@@ -1,6 +1,6 @@
 # test2_bogota
 
-###### **Punto 3** 
+### **Punto 3** 
 Iniciar contenedor de base de datos postgres:
 
 sudo docker-compose up   (dentro de test2_bogota)
