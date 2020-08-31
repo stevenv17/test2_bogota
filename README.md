@@ -18,7 +18,7 @@ dentro de test2_bogota/app-front:
 	ng serve
 
 
-[Test Image 1](front.png)
+![Test Image 1](front.png)
 
 #### Usando API:
 
