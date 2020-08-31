@@ -11,5 +11,5 @@ CREATE TABLE location (
     name VARCHAR(128) NOT NULL,
     area_m2 NUMERIC(10,3) NOT NULL,
     parent_id UUID DEFAULT NULL,
-    CONSTRAINT fk_location FOREIGN KEY (parent_id) REFERENCES location(id)
+    CONSTRAINT fk_location FOREIGN KEY (parent_id) REFERENCES location(id) ON DELETE SET NULL
 );
