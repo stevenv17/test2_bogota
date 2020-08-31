@@ -12,7 +12,7 @@ dentro de test2_bogota/app:
 
 	./mvnw spring-boot:run -e
 
-#### Iniciar front:
+#### Iniciar front (http://localhost:4200/):
 dentro de test2_bogota/app-front:
 
 	ng serve
