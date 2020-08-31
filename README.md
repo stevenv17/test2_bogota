@@ -1,41 +1,45 @@
 # test2_bogota
 
-### **Punto 3** 
-Iniciar contenedor de base de datos postgres:
+## **Punto 3** 
 
-sudo docker-compose up   (dentro de test2_bogota)
+#### Iniciar contenedor de base de datos postgres:
 
-iniciar aplicación java:
+**sudo docker-compose up**   (dentro de test2_bogota)
 
-./mvnw spring-boot:run -e  (dentro de test2_bogota/app)
+#### iniciar aplicación java:
+
+**./mvnw spring-boot:run -e**  (dentro de test2_bogota/app)
 
 
-* crear location:
+#### Usando API:
 
-petición POST al recurso "http://localhost:8080/api/v1/location"
-enviando JSON con la forma: 
+###### **crear location:**
+
+petición POST al recurso **"http://localhost:8080/api/v1/location"**, enviando JSON con la forma, en donde "parentLoc" sería el id de la localización padre:
+
 {
-	"name": "Cali",
-	"area_m2": "2664.467"
+	"name": "Nueva York",
+	"area_m2": "1445.467",
+	"parentLoc": null
 }
 
-* obtener todos los location:
+###### **obtener todos los location:**
 
-petición GET al recurso "http://localhost:8080/api/v1/location"
+petición GET al recurso **"http://localhost:8080/api/v1/location"**
 
-* obtener location por medio del id:
+###### **obtener location por medio del id:**
 
-petición GET al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id del location)
+petición GET al recurso **"http://localhost:8080/api/v1/location/{ID}"**  (reemplazar "{ID}" por el id de la localización)
 
-* editar location:
+###### **editar location:**
 
-petición PUT al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id del location)
-enviando JSON con la forma:
+petición PUT al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id del location), enviando JSON con la forma:
+
 {
 	"name": "Cali edited"
 }
 
-Eliminar location:
+###### **Eliminar location:**
 
 petición DELETE al recurso "http://localhost:8080/api/v1/location/{ID}" (reemplazar "{ID}" por el id del location)
 
