@@ -6,14 +6,14 @@
 
 **sudo docker-compose up**   (dentro de test2_bogota)
 
-#### iniciar aplicación java:
+#### Iniciar aplicación java:
 
 **./mvnw spring-boot:run -e**  (dentro de test2_bogota/app)
 
 
 #### Usando API:
 
-###### **crear location:**
+##### **Crear location:**
 
 petición POST al recurso **"http://localhost:8080/api/v1/location"**, enviando JSON con la forma, en donde "parentLoc" sería el id de la localización padre:
 
@@ -23,15 +23,15 @@ petición POST al recurso **"http://localhost:8080/api/v1/location"**, enviando 
 	"parentLoc": null
 }
 
-###### **obtener todos los location:**
+##### **Obtener todos los location:**
 
 petición GET al recurso **"http://localhost:8080/api/v1/location"**
 
-###### **obtener location por medio del id:**
+##### **Obtener location por medio del id:**
 
 petición GET al recurso **"http://localhost:8080/api/v1/location/{ID}"**  (reemplazar "{ID}" por el id de la localización)
 
-###### **editar location:**
+##### **Editar location:**
 
 petición PUT al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id del location), enviando JSON con la forma:
 
@@ -39,7 +39,7 @@ petición PUT al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplaz
 	"name": "Cali edited"
 }
 
-###### **Eliminar location:**
+##### **Eliminar location:**
 
 petición DELETE al recurso "http://localhost:8080/api/v1/location/{ID}" (reemplazar "{ID}" por el id del location)
 
