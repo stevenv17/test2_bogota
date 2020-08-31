@@ -4,16 +4,16 @@
 
 #### Iniciar contenedor de base de datos postgres:
 
-	**sudo docker-compose up**   (dentro de test2_bogota)
+	sudo docker-compose up   (dentro de test2_bogota)
 
 #### Iniciar aplicación java:
 
-	**./mvnw spring-boot:run -e**  (dentro de test2_bogota/app)
+	./mvnw spring-boot:run -e  (dentro de test2_bogota/app)
 
 
 #### Usando API:
 
-	##### **Crear location:**
+##### **Crear location:**
 
 		petición POST al recurso **"http://localhost:8080/api/v1/location"**, enviando JSON con la forma, en donde "parentLoc" sería el id de la localización padre:
 
@@ -25,21 +25,21 @@
 
 ##### **Obtener todos los location:**
 
-petición GET al recurso **"http://localhost:8080/api/v1/location"**
+	petición GET al recurso "http://localhost:8080/api/v1/location"
 
 ##### **Obtener location por medio del id:**
 
-petición GET al recurso **"http://localhost:8080/api/v1/location/{ID}"**  (reemplazar "{ID}" por el id de la localización)
+	petición GET al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id de la localización)
 
 ##### **Editar location:**
 
-petición PUT al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id del location), enviando JSON con la forma:
+	petición PUT al recurso "http://localhost:8080/api/v1/location/{ID}"  (reemplazar "{ID}" por el id del location), enviando JSON con la forma:
 
-{
-	"name": "Cali edited"
-}
+	{
+		"name": "Cali edited"
+	}
 
 ##### **Eliminar location:**
 
-petición DELETE al recurso "http://localhost:8080/api/v1/location/{ID}" (reemplazar "{ID}" por el id del location)
+	petición DELETE al recurso "http://localhost:8080/api/v1/location/{ID}" (reemplazar "{ID}" por el id del location)
 
